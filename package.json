@@ -1,0 +1,10 @@
+{
+  "name": "litelytics-client",
+  "version": "0.0.3",
+  "description": "Client library for Litelytics",
+  "main": "index.js",
+  "repository": "https://github.com/aleksrutins/litelytics-client.git",
+  "author": "Aleks Rutins <aleks@rutins.com>",
+  "license": "BSD-2-Clause",
+  "private": false
+}

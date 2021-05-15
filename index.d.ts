@@ -21,10 +21,10 @@ declare module "litelytics-client" {
             timestamp: string,
             ip: string
         };
-        declare function logIn(instanceURL?: string): Promise<LogInResult>;
-        declare function setAuth(token: string, userId: number): void;
-        declare function setInstance(instanceURL: string): void;
-        declare function getSiteInfo(siteId: number): SiteInfo;
-        declare function getSiteData(siteId: number): Visit[];
+        function logIn(instanceURL?: string): Promise<LogInResult>;
+        function setAuth(token: string, userId: number): void;
+        function setInstance(instanceURL: string): void;
+        function getSiteInfo(siteId: number): SiteInfo;
+        function getSiteData(siteId: number): Visit[];
     }
 }

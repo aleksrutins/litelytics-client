@@ -1,7 +1,7 @@
 declare module "litelytics-client" {
     export default class Analytics {
         constructor(instanceURL: string);
-        async track(): void;
+        track(): Promise<void>;
     }
     export namespace auth {
         type LogInResult = {

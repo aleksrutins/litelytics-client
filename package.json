@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "Client library for Litelytics",
   "main": "index.js",
+  "types": "index.d.ts",
   "repository": "https://github.com/aleksrutins/litelytics-client.git",
   "author": "Aleks Rutins <aleks@rutins.com>",
   "license": "BSD-2-Clause",

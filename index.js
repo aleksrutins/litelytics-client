@@ -4,13 +4,15 @@ export default class Analytics {
     }
     async track() {
         await fetch(`${this.instanceURL}/api/site/${location.hostname}/track`, {
-        method: "POST",
-        body: JSON.stringify({
-            path: location.pathname
-        }),
-        headers: {
-            "Content-Type": "application/json"
-        }
+            method: "POST",
+            body: JSON.stringify({
+                path: location.pathname
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
     }
 }
+
+export * as auth from './oauth.js';

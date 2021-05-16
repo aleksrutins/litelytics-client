@@ -11,7 +11,7 @@ export function logIn(instanceURL = _instanceUrl) {
             if(data.success) {
                 isLoggedIn = true;
                 wnd.close();
-                setAuth(data.token, data.userId);
+                setAuth(data.detail.token, data.detail.userId);
                 res(data);
             } else {
                 rej("Login unsuccessful");

@@ -5,9 +5,9 @@ export function logIn(instanceURL = _instanceUrl) {
     if(_instanceUrl != instanceURL && instanceURL != null) _instanceUrl = instanceURL;
     return new Promise((res, rej) => {
         if(instanceURL == null) rej("Instance URL must not be null");
-        const wnd = window.open(instanceURL + '/login.html');
+        const wnd = window.open(instanceURL + '/login.html', '_blank', 'location=no,menubar=no,toolbar=no');
         var isLoggedIn = false;
-        wnd.document.body.addEventListener('logged-in', data => {
+        wnd.onload = () => wnd.document.body.addEventListener('logged-in', data => {
             if(data.success) {
                 isLoggedIn = true;
                 wnd.close();

@@ -7,8 +7,8 @@ export function logIn(instanceURL = _instanceUrl) {
         if(instanceURL == null) rej("Instance URL must not be null");
         const wnd = window.open(instanceURL + '/login.html', '_blank', 'location=no,menubar=no,toolbar=no');
         var isLoggedIn = false;
-        wnd.onload = () => wnd.document.body.addEventListener('logged-in', data => {
-            if(data.success) {
+        wnd.addEventListener('logged-in', data => {
+            if(data.detail.success) {
                 isLoggedIn = true;
                 wnd.close();
                 setAuth(data.detail.token, data.detail.userId);

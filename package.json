@@ -1,6 +1,6 @@
 {
   "name": "litelytics-client",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Client library for Litelytics",
   "main": "index.js",
   "type": "module",

@@ -21,9 +21,6 @@ export function logIn(instanceURL = _instanceUrl) {
                 rej("Login unsuccessful");
             }
         });
-        wnd.addEventListener('close', (e) => {
-            if(!isLoggedIn) rej("Window closed before logged in");
-        });
     });
 }
 

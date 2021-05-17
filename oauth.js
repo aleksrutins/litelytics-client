@@ -10,6 +10,7 @@ export function logIn(instanceURL = _instanceUrl) {
         window.addEventListener('message', event => {
             if(!event.origin.startsWith(instanceURL)) return;
             const data = event.data;
+            if(data.msg != 'logged-in') return;
             if(data.detail.success) {
                 isLoggedIn = true;
                 wnd.close();

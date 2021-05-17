@@ -7,7 +7,7 @@ export function logIn(instanceURL = _instanceUrl) {
         if(instanceURL == null) rej("Instance URL must not be null");
         const wnd = window.open(instanceURL + '/login.html', '_blank', 'location=no,menubar=no,toolbar=no');
         var isLoggedIn = false;
-        window.addEventListener('message', event => {
+        window.addEventListener('message', function logInListener(event) {
             if(!event.origin.startsWith(instanceURL)) return;
             const data = event.data;
             if(data.msg != 'logged-in') return;
@@ -15,9 +15,10 @@ export function logIn(instanceURL = _instanceUrl) {
                 isLoggedIn = true;
                 wnd.close();
                 setAuth(data.detail.token, data.detail.userId);
-                window.removeEventListener('litelytics-logged-in', logInListener);
+                window.removeEventListener('message', logInListener);
                 res(data);
             } else {
+                window.removeEventListener('message', logInListener);
                 rej("Login unsuccessful");
             }
         });

@@ -7,11 +7,12 @@ export function logIn(instanceURL = _instanceUrl) {
         if(instanceURL == null) rej("Instance URL must not be null");
         const wnd = window.open(instanceURL + '/login.html', '_blank', 'location=no,menubar=no,toolbar=no');
         var isLoggedIn = false;
-        wnd.addEventListener('logged-in', data => {
+        window.addEventListener('litelytics-logged-in', function logInListener(data) {
             if(data.detail.success) {
                 isLoggedIn = true;
                 wnd.close();
                 setAuth(data.detail.token, data.detail.userId);
+                window.removeEventListener('litelytics-logged-in', logInListener);
                 res(data);
             } else {
                 rej("Login unsuccessful");

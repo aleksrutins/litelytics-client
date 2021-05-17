@@ -7,7 +7,9 @@ export function logIn(instanceURL = _instanceUrl) {
         if(instanceURL == null) rej("Instance URL must not be null");
         const wnd = window.open(instanceURL + '/login.html', '_blank', 'location=no,menubar=no,toolbar=no');
         var isLoggedIn = false;
-        window.addEventListener('litelytics-logged-in', function logInListener(data) {
+        window.addEventListener('message', event => {
+            if(!event.origin.startsWith(instanceURL)) return;
+            const data = event.data;
             if(data.detail.success) {
                 isLoggedIn = true;
                 wnd.close();

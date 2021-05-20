@@ -76,3 +76,15 @@ export async function getSiteData(siteId) {
     if(!result.ok) throw new Error("Not authorized");
     return (await result.json()).data;
 }
+
+export async function addUserToSite(siteId, userId) {
+    if(!(checkAuth() && checkInstanceURL())) throw new Error('Must be authenticated');
+
+    const result = await fetch(_instanceUrl + '/api/site/' + siteId + '/user/' + userId = '/add', {
+        headers: {
+            'Authorization': 'Bearer ' + _token
+        }
+    });
+    if(!result.ok) throw new Error("Not authorized");
+    return (await result.json()).success;
+}

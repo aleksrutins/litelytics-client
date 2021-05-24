@@ -80,7 +80,7 @@ export async function getSiteData(siteId) {
 export async function addUserToSite(siteId, userId) {
     if(!(checkAuth() && checkInstanceURL())) throw new Error('Must be authenticated');
 
-    const result = await fetch(_instanceUrl + '/api/site/' + siteId + '/user/' + userId = '/add', {
+    const result = await fetch(_instanceUrl + '/api/site/' + siteId + '/user/' + userId + '/add', {
         headers: {
             'Authorization': 'Bearer ' + _token
         }

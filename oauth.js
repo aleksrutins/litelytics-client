@@ -84,7 +84,8 @@ export async function addUserToSite(siteId, userId) {
         headers: {
             'Authorization': 'Bearer ' + _token
         },
-        method: 'POST'
+        method: 'POST',
+        mode: 'no-cors'
     });
     if(!result.ok) throw new Error("Not authorized");
     return (await result.json()).success;

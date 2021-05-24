@@ -83,7 +83,8 @@ export async function addUserToSite(siteId, userId) {
     const result = await fetch(_instanceUrl + '/api/site/' + siteId + '/user/' + userId + '/add', {
         headers: {
             'Authorization': 'Bearer ' + _token
-        }
+        },
+        method: 'POST'
     });
     if(!result.ok) throw new Error("Not authorized");
     return (await result.json()).success;

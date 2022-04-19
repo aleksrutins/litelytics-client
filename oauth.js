@@ -90,3 +90,15 @@ export async function addUserToSite(siteId, userEmail) {
     if(!result.ok) throw new Error("Not authorized");
     return (await result.json()).success;
 }
+
+export async function addSite(siteDomain) {
+    if(!(checkAuth() && checkInstanceURL())) throw new Error('Must be authenticated');
+    
+    const result = await fetch(_instanceUrl + '/api/site/' + siteDomain + '/create', {
+        headers: {
+            'Authorization': 'Bearer ' + _token
+        },
+        method: 'POST',
+        mode: 'no-cors'
+    })
+}

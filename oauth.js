@@ -77,10 +77,10 @@ export async function getSiteData(siteId) {
     return (await result.json()).data;
 }
 
-export async function addUserToSite(siteId, userId) {
+export async function addUserToSite(siteId, userEmail) {
     if(!(checkAuth() && checkInstanceURL())) throw new Error('Must be authenticated');
 
-    const result = await fetch(_instanceUrl + '/api/site/' + siteId + '/user/' + userId + '/add', {
+    const result = await fetch(_instanceUrl + '/api/site/' + siteId + '/user/' + userEmail + '/add', {
         headers: {
             'Authorization': 'Bearer ' + _token
         },
